@@ -1,55 +1,44 @@
 <template>
-  <div>
-    <nuxt />
+  <div class="flex min-h-screen bg-primary-50">
+    <sidebar />
+    <nuxt class="flex-auto h-screen overflow-y-auto p-6" />
   </div>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+<script>
+import Sidebar from '~/layouts/partials/Sidebar.vue'
+export default {
+  components: {
+    Sidebar
+  }
 }
+</script>
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
+<style scoped>
+.page-enter-active {
+  animation: acrossIn 0.4s ease-out both;
 }
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.page-leave-active {
+  animation: acrossOut 0.6s ease-in both;
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+@keyframes acrossIn {
+  0% {
+    transform: translate3d(-0.35%, 0, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+@keyframes acrossOut {
+  0% {
+    transform: translate3d(0%, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(20%, 0, 0);
+    opacity: 0;
+  }
 }
 </style>
